@@ -1,0 +1,6 @@
+{
+    "scripts" :
+    {
+        "azgraph": "azgraph.cmd"
+    }
+}

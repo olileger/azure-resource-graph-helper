@@ -1,15 +1,16 @@
 @ECHO OFF
 
-SETLOCAL EnableDelayedExpansion
+SETLOCAL ENABLEDELAYEDEXPANSION
 CLS
 
 REM READ OPTIONS
-SET /P SUBGUID= < azgraph_subguid.txt
-SET /P OUTPUT= < azgraph_output.txt
+SET /P SUBGUID= < .\azgraph_subguid.txt
+SET /P OUTPUT= < .\azgraph_output.txt
+SET CMD="TYPE %1"
 
 REM READ QUERY
 SET "QUERY="
-FOR /F "delims=" %%A in (azgraph_query.txt) DO (
+FOR /F "delims=" %%A in (' %CMD% ') DO (
     SET "QUERY=!QUERY!%%A "
 )
 

@@ -1,0 +1,2 @@
+where type =~ 'Microsoft.Compute/virtualMachines'
+| project name, properties.hardwareProfile.vmSize

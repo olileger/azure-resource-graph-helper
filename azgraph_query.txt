@@ -1,2 +1,0 @@
-project name, type, sku.name
-| where type =~ 'Microsoft.Storage/storageAccounts'

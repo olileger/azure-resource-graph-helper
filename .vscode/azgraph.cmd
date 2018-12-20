@@ -16,5 +16,6 @@ FOR /F "delims=" %%A in (' %CMD% ') DO (
 
 REM RUN QUERY
 SET CMD=az graph query -s %SUBGUID% --output %OUTPUT% -q "!QUERY!"
-ECHO Running : %CMD%
+ECHO Query : "!QUERY!"
+ECHO.
 %CMD%

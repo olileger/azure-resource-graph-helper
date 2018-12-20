@@ -4,18 +4,24 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 CLS
 
 REM READ OPTIONS
-SET /P SUBGUID= < .\azgraph_subguid.txt
 SET /P OUTPUT= < .\azgraph_output.txt
-SET CMD="TYPE %1"
+
+REM READ SUBSCRIPTIONS
+SET "SUBGUID="
+FOR /F "delims=" %%A in (.\azgraph_subguid.txt) DO (
+    SET "SUBGUID=!SUBGUID!%%A "
+)
+SET SUBGUID=%SUBGUID:~0,-1%
 
 REM READ QUERY
+SET CMD="TYPE %1"
 SET "QUERY="
-FOR /F "delims=" %%A in (' %CMD% ') DO (
-    SET "QUERY=!QUERY!%%A "
+FOR /F "delims=" %%B in (' %CMD% ') DO (
+    SET "QUERY=!QUERY!%%B "
 )
 
 REM RUN QUERY
-SET CMD=az graph query -s %SUBGUID% --output %OUTPUT% -q "!QUERY!"
+SET CMD=az graph query --subscriptions !SUBGUID! --output %OUTPUT% -q "!QUERY!"
 ECHO Query : "!QUERY!"
 ECHO.
 %CMD%

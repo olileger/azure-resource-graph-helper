@@ -15,7 +15,8 @@
             "presentation": {
                 "reveal": "always",
                 "panel": "dedicated",
-                "echo": false
+                "echo": false,
+                "clear": true
             }
         }
     ]
